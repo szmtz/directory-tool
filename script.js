@@ -42,19 +42,15 @@ function populateCards(schools) {
     `;
     resultsDiv.innerHTML += card;
   }
+
+    // Insert pagination control logic here
+    const totalPages = Math.ceil(schools.length / itemsPerPage);
+    document.getElementById('currentPageLabel').textContent = `Page ${currentPage} of ${totalPages}`;
+    const prevPageBtn = document.getElementById('prevPageBtn');
+    const nextPageBtn = document.getElementById('nextPageBtn');
+    prevPageBtn.disabled = currentPage === 1;
+    nextPageBtn.disabled = currentPage === totalPages;
 }
-
- // Update pagination controls
- const totalPages = Math.ceil(schools.length / itemsPerPage);
- document.getElementById('currentPageLabel').textContent = `Page ${currentPage} of ${totalPages}`;
-
- const prevPageBtn = document.getElementById('prevPageBtn');
- const nextPageBtn = document.getElementById('nextPageBtn');
-
- prevPageBtn.disabled = currentPage === 1;
- nextPageBtn.disabled = currentPage === totalPages;
-
-
 
 // Function to populate dropdowns
 function populateDropdowns(schools) {
@@ -87,70 +83,52 @@ function populateDropdown(id, options) {
 
 // Function to filter and display cards
 function filterAndDisplayCards(schools) {
-    const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    const selectedTeaRegion = document.getElementById('teaRegionSelect').value;
-    const selectedType = document.getElementById('typeSelect').value;
-    
-    const resultsDiv = document.getElementById('results');
-    resultsDiv.innerHTML = ''; // Clear previous results
-    
-    schools.forEach(school => {
-      if (
-        school.School.toLowerCase().includes(searchInput) &&
-        (!selectedTeaRegion || school["TEA REGION"] === selectedTeaRegion) &&
-        (!selectedType || school.TYPE === selectedType)
-      ) {
-        const card = `
-          <div class="card">
-          <h2>${school.School}</h2>
-          <p>Address: ${school.Address}</p>
-          <p>City: ${school.City}</p>
-          <p>Phone: ${school.PHONE}</p>
-          <p>District: ${school.DISTRICT}</p>
-          <p>TEA Region: ${school["TEA REGION"]}</p>
-          <p>TEA R#: ${school["TEA REGION #"]}</p>
-          <p>Type: ${school.TYPE}</p>
-          <p>Enrollment: ${school.ENROLLMENT}</p>
-          <p>Website: ${school.WEB}</p>
-        </div>
-        `;
-        resultsDiv.innerHTML += card;
-      }
-    });
-  }
-  
-  // Attach event listeners
-  document.getElementById('searchInput').addEventListener('input', function() {
-    fetch('schools.json')
-      .then(response => response.json())
-      .then(data => filterAndDisplayCards(data));
-  });
-  
-  document.getElementById('teaRegionSelect').addEventListener('change', function() {
-    fetch('schools.json')
-      .then(response => response.json())
-      .then(data => filterAndDisplayCards(data));
-  });
-  
-  document.getElementById('typeSelect').addEventListener('change', function() {
-    fetch('schools.json')
-      .then(response => response.json())
-      .then(data => filterAndDisplayCards(data));
-  });
+  const searchInput = document.getElementById('searchInput').value.toLowerCase();
+  const selectedTeaRegion = document.getElementById('teaRegionSelect').value;
+  const selectedType = document.getElementById('typeSelect').value;
 
-  // Add this after your existing event listeners
+  const filteredSchools = schools.filter(school => {
+    return (
+      school.School.toLowerCase().includes(searchInput) &&
+      (!selectedTeaRegion || school["TEA REGION"] === selectedTeaRegion) &&
+      (!selectedType || school.TYPE === selectedType)
+    );
+  });
+  
+  populateCards(filteredSchools);  // Use the filtered list
+}
+    
+ 
+  
+  
+ // Your existing event listeners could then use `allSchools` instead of fetching anew
+document.getElementById('searchInput').addEventListener('input', function() {
+  filterAndDisplayCards(allSchools);
+});
+
+document.getElementById('teaRegionSelect').addEventListener('change', function() {
+  filterAndDisplayCards(allSchools);
+});
+
+document.getElementById('typeSelect').addEventListener('change', function() {
+  filterAndDisplayCards(allSchools);
+});
+
+// Pagination event listeners
 document.getElementById('prevPageBtn').addEventListener('click', function() {
   currentPage--;
-  fetch('schools.json')
-    .then(response => response.json())
-    .then(data => populateCards(data));
+  populateCards(allSchools);
 });
 
 document.getElementById('nextPageBtn').addEventListener('click', function() {
   currentPage++;
-  fetch('schools.json')
-    .then(response => response.json())
-    .then(data => populateCards(data));
+  populateCards(allSchools);
 });
+
+
+
+
+
+
 
   
