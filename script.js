@@ -1,15 +1,17 @@
-console.log('loaded'); 
+ 
 
 // Load JSON data
 fetch('schools.json')
   .then(response => response.json())
   .then(data => {
+
     // Populate cards
     populateCards(data);
 
     // Populate dropdowns
     populateDropdowns(data);
   });
+
 
 // Function to populate cards
 function populateCards(schools) {
