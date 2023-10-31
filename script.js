@@ -1,3 +1,5 @@
+console.log('loaded'); 
+
 // Load JSON data
 fetch('schools.json')
   .then(response => response.json())
@@ -40,7 +42,7 @@ function populateDropdowns(schools) {
   
   schools.forEach(school => {
     teaRegionSet.add(school["TEA REGION"]);
-    typeSet.add(school.type);
+    typeSet.add(school.TYPE);
   });
   
   populateDropdown('teaRegionSelect', Array.from(teaRegionSet));
@@ -60,8 +62,7 @@ function populateDropdown(id, options) {
   });
 }
 
-// Assuming previous code is intact
-// Add these functions to your existing JavaScript
+
 
 // Function to filter and display cards
 function filterAndDisplayCards(schools) {
@@ -74,14 +75,23 @@ function filterAndDisplayCards(schools) {
     
     schools.forEach(school => {
       if (
-        school.name.toLowerCase().includes(searchInput) &&
-        (selectedTeaRegion === "All" || school["TEA REGION"] === selectedTeaRegion) &&
-        (selectedType === "All" || school.type === selectedType)
+        school.School.toLowerCase().includes(searchInput) &&
+        (!selectedTeaRegion || school["TEA REGION"] === selectedTeaRegion) &&
+        (!selectedType || school.TYPE === selectedType)
       ) {
         const card = `
           <div class="card">
-            <!-- Your existing card content here -->
-          </div>
+          <h2>${school.School}</h2>
+          <p>Address: ${school.Address}</p>
+          <p>City: ${school.City}</p>
+          <p>Phone: ${school.PHONE}</p>
+          <p>District: ${school.DISTRICT}</p>
+          <p>TEA Region: ${school["TEA REGION"]}</p>
+          <p>TEA R#: ${school["TEA REGION #"]}</p>
+          <p>Type: ${school.TYPE}</p>
+          <p>Enrollment: ${school.ENROLLMENT}</p>
+          <p>Website: ${school.WEB}</p>
+        </div>
         `;
         resultsDiv.innerHTML += card;
       }
