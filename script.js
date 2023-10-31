@@ -59,3 +59,51 @@ function populateDropdown(id, options) {
     select.appendChild(optElement);
   });
 }
+
+// Assuming previous code is intact
+// Add these functions to your existing JavaScript
+
+// Function to filter and display cards
+function filterAndDisplayCards(schools) {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const selectedTeaRegion = document.getElementById('teaRegionSelect').value;
+    const selectedType = document.getElementById('typeSelect').value;
+    
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = ''; // Clear previous results
+    
+    schools.forEach(school => {
+      if (
+        school.name.toLowerCase().includes(searchInput) &&
+        (selectedTeaRegion === "All" || school["TEA REGION"] === selectedTeaRegion) &&
+        (selectedType === "All" || school.type === selectedType)
+      ) {
+        const card = `
+          <div class="card">
+            <!-- Your existing card content here -->
+          </div>
+        `;
+        resultsDiv.innerHTML += card;
+      }
+    });
+  }
+  
+  // Attach event listeners
+  document.getElementById('searchInput').addEventListener('input', function() {
+    fetch('schools.json')
+      .then(response => response.json())
+      .then(data => filterAndDisplayCards(data));
+  });
+  
+  document.getElementById('teaRegionSelect').addEventListener('change', function() {
+    fetch('schools.json')
+      .then(response => response.json())
+      .then(data => filterAndDisplayCards(data));
+  });
+  
+  document.getElementById('typeSelect').addEventListener('change', function() {
+    fetch('schools.json')
+      .then(response => response.json())
+      .then(data => filterAndDisplayCards(data));
+  });
+  
