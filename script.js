@@ -1,4 +1,4 @@
-console.log('loaded'); 
+ 
 
 // Load JSON data
 fetch('schools.json')
