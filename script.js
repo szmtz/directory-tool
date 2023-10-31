@@ -14,10 +14,21 @@ fetch('schools.json')
 
 
 // Function to populate cards
+// function populateCards(schools) {
+//   const resultsDiv = document.getElementById('results');
+
+let currentPage = 1;
+const itemsPerPage = 50;
+
 function populateCards(schools) {
   const resultsDiv = document.getElementById('results');
+  resultsDiv.innerHTML = '';  // Clear the container
   
-  schools.forEach(school => {
+  let startIndex = (currentPage - 1) * itemsPerPage;
+  let endIndex = Math.min(startIndex + itemsPerPage, schools.length);
+
+  for (let i = startIndex; i < endIndex; i++) {
+    const school = schools[i];
     const card = `
       <div class="card">
         <h2>${school.School}</h2>
@@ -32,10 +43,10 @@ function populateCards(schools) {
         <p>Website: ${school.WEB}</p>
       </div>
     `;
-    
     resultsDiv.innerHTML += card;
-  });
+  }
 }
+
 
 // Function to populate dropdowns
 function populateDropdowns(schools) {
