@@ -1,15 +1,12 @@
  
 
-// Load JSON data
+// Fetch data once when page loads
 fetch('schools.json')
   .then(response => response.json())
   .then(data => {
-
-    // Populate cards
-    populateCards(data);
-
-    // Populate dropdowns
-    populateDropdowns(data);
+    allSchools = data;
+    populateCards(data);  // Initialize cards
+    populateDropdowns(data);  // Initialize dropdowns
   });
 
 
@@ -46,6 +43,17 @@ function populateCards(schools) {
     resultsDiv.innerHTML += card;
   }
 }
+
+ // Update pagination controls
+ const totalPages = Math.ceil(schools.length / itemsPerPage);
+ document.getElementById('currentPageLabel').textContent = `Page ${currentPage} of ${totalPages}`;
+
+ const prevPageBtn = document.getElementById('prevPageBtn');
+ const nextPageBtn = document.getElementById('nextPageBtn');
+
+ prevPageBtn.disabled = currentPage === 1;
+ nextPageBtn.disabled = currentPage === totalPages;
+
 
 
 // Function to populate dropdowns
@@ -129,4 +137,20 @@ function filterAndDisplayCards(schools) {
       .then(response => response.json())
       .then(data => filterAndDisplayCards(data));
   });
+
+  // Add this after your existing event listeners
+document.getElementById('prevPageBtn').addEventListener('click', function() {
+  currentPage--;
+  fetch('schools.json')
+    .then(response => response.json())
+    .then(data => populateCards(data));
+});
+
+document.getElementById('nextPageBtn').addEventListener('click', function() {
+  currentPage++;
+  fetch('schools.json')
+    .then(response => response.json())
+    .then(data => populateCards(data));
+});
+
   
