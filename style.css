@@ -1,8 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+
 /* This affects the overall body */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+}
+
+/* Center the title and make it look appealing */
+h1 {
+  font-family: 'Oswald', sans-serif;/* Modern, clean typeface */
+  font-weight: 300;  /* Lighter font weight */
+  font-size: 36px;   /* Slightly larger font size */
+  text-align: center; /* Center align */
+  color: #333;  /* Dark Gray */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);  /* Slight text shadow */
+  margin-bottom: 24px;
 }
 
 /* Affecting the container where the cards will go */
