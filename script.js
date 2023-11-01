@@ -148,6 +148,20 @@ document.getElementById('nextPageBtn').addEventListener('click', function() {
   populateCards(allSchools);
 });
 
+// New event listener for Clear Filters button
+document.getElementById('clearFiltersBtn').addEventListener('click', function() {
+  // Reset dropdowns to default value
+  document.getElementById('teaRegionSelect').value = "";
+  document.getElementById('typeSelect').value = "";
+  document.getElementById('sortSelect').value = "";
+  // Reset search input
+  document.getElementById('searchInput').value = "";
+  // Optionally, reset to the first page
+  currentPage = 1;
+  // Redisplay cards
+  filterAndDisplayCards(allSchools);
+});
+
 
 
 
