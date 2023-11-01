@@ -1,4 +1,5 @@
- 
+ // declare allSchools variable
+ let allSchools = []; 
 
 // Fetch data once when page loads
 fetch('schools.json')
