@@ -129,6 +129,13 @@ document.getElementById('typeSelect').addEventListener('change', function() {
   filterAndDisplayCards(allSchools);
 });
 
+// New event listener for sorting
+document.getElementById('sortBySelect').addEventListener('change', function() {
+  const sortByKey = document.getElementById('sortBySelect').value;
+  const sortedSchools = sortSchools(allSchools, sortByKey);
+  populateCards(sortedSchools);
+});
+
 // Pagination event listeners
 document.getElementById('prevPageBtn').addEventListener('click', function() {
   currentPage--;
