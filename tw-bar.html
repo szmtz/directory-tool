@@ -1,0 +1,25 @@
+<!-- In the head section, add Tailwind CSS -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+
+<!-- Top Bar -->
+<div class="container mx-auto mt-4">
+  <h1 class="text-center text-3xl text-blue-600 mb-4">School Directory Search</h1>
+  <div class="flex space-x-4">
+    <select class="form-select px-4 py-2 rounded" id="teaRegionSelect">
+      <option value="">Select TEA Region</option>
+    </select>
+    <select class="form-select px-4 py-2 rounded" id="typeSelect">
+      <option value="">Select School Type</option>
+    </select>
+    <select class="form-select px-4 py-2 rounded" id="sortSelect">
+      <option value="" disabled selected>Sort By</option>
+    </select>
+    <input type="text" class="form-input px-4 py-2 rounded" id="searchInput" placeholder="Search for schools...">
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="clearFiltersBtn">
+      Clear Filters
+    </button>
+    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" id="highestEnrollmentBtn">
+      Highest Enrollment
+    </button>
+  </div>
+</div>
