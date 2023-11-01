@@ -131,8 +131,8 @@ document.getElementById('typeSelect').addEventListener('change', function() {
 });
 
 // New event listener for sorting
-document.getElementById('sortBySelect').addEventListener('change', function() {
-  const sortByKey = document.getElementById('sortBySelect').value;
+document.getElementById('sortSelect').addEventListener('change', function() {
+  const sortByKey = document.getElementById('sortSelect').value;
   const sortedSchools = sortSchools(allSchools, sortByKey);
   populateCards(sortedSchools);
 });
@@ -162,6 +162,13 @@ document.getElementById('clearFiltersBtn').addEventListener('click', function() 
   filterAndDisplayCards(allSchools);
 });
 
+// New event listener for Highest Enrollment button 
+
+
+document.getElementById('highestEnrollmentBtn').addEventListener('click', function() {
+  const sortedSchools = sortSchools(allSchools, 'Enrollment').reverse(); // Reverse to get highest enrollment first
+  populateCards(sortedSchools);
+});
 
 
 
