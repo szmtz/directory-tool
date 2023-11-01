@@ -98,6 +98,7 @@ function filterAndDisplayCards(schools) {
   const searchInput = document.getElementById('searchInput').value.toLowerCase();
   const selectedTeaRegion = document.getElementById('teaRegionSelect').value;
   const selectedType = document.getElementById('typeSelect').value;
+  const selectedSortBy = document.getElementById('sortSelect').value;  // New line
 
   const filteredSchools = schools.filter(school => {
     return (
@@ -106,10 +107,12 @@ function filterAndDisplayCards(schools) {
       (!selectedType || school.TYPE === selectedType)
     );
   });
+
+  const sortedSchools = sortSchools(filteredSchools, selectedSortBy);  // New line
   
-  populateCards(filteredSchools);  // Use the filtered list
+  populateCards(sortedSchools);  // Use the sorted list
 }
-    
+
  
   
   
