@@ -79,6 +79,18 @@ function populateDropdown(id, options) {
   });
 }
 
+function sortSchools(schoolsArray, sortByKey) {
+  switch (sortByKey) {
+    case 'Name':
+      return schoolsArray.sort((a, b) => a.School.localeCompare(b.School));
+    case 'City':
+      return schoolsArray.sort((a, b) => a.City.localeCompare(b.City));
+    case 'Enrollment':
+      return schoolsArray.sort((a, b) => a.ENROLLMENT - b.ENROLLMENT);
+    default:
+      return schoolsArray; // If no sorting key is provided, return the original array
+  }
+}
 
 
 // Function to filter and display cards
