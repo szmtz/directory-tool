@@ -28,18 +28,24 @@ function populateCards(schools) {
   for (let i = startIndex; i < endIndex; i++) {
     const school = schools[i];
     const card = `
-      <div class="card">
-        <h2>${school.School}</h2>
-        <p>Address: ${school.Address}</p>
-        <p>City: ${school.City}</p>
-        <p>Phone: ${school.PHONE}</p>
-        <p>District: ${school.DISTRICT}</p>
-        <p>TEA Region: ${school["TEA REGION"]}</p>
-        <p>TEA R#: ${school["TEA REGION #"]}</p>
-        <p>Type: ${school.TYPE}</p>
-        <p>Enrollment: ${school.ENROLLMENT}</p>
-        <p>Website: ${school.WEB}</p>
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">${school.School}</h5>
+              <p class="card-text"><strong>Address:</strong> ${school.Address}</p>
+              <p class="card-text"><strong>City:</strong> ${school.City}</p>
+              <p class="card-text"><strong>Phone:</strong> ${school.PHONE}</p>
+              <p class="card-text"><strong>District:</strong> ${school.DISTRICT}</p>
+              <p class="card-text"><strong>TEA Region:</strong> ${school["TEA REGION"]}</p>
+              <p class="card-text"><strong>Type:</strong> ${school.TYPE}</p>
+              <p class="card-text"><strong>Enrollment:</strong> ${school.ENROLLMENT}</p>
+              <p class="card-text"><strong>Website:</strong> <a href="${school.WEB}" target="_blank">${school.WEB}</a></p>
+            </div>
+          </div>
+        </div>
       </div>
+
     `;
     resultsDiv.innerHTML += card;
   }
