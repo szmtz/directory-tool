@@ -25,6 +25,24 @@ function ensureHttpPrefix(url) {
 let currentPage = 1;
 const itemsPerPage = 50;
 
+function getSchoolTypeClass(type) {
+  switch(type) {
+    case 'Elementary':
+      return 'elementary-school';
+    case 'Middle School':
+      return 'middle-school';
+    case 'High School':
+        return 'high-school';
+    case 'Elem/Secondary':
+          return 'elem-secondary';
+    // Add more cases for different school types
+    default:
+      return 'other-school';
+  }
+}
+
+
+
 function populateCards(schools) {
   const resultsDiv = document.getElementById('results');
   resultsDiv.innerHTML = '';  // Clear the container
@@ -35,7 +53,7 @@ function populateCards(schools) {
   for (let i = startIndex; i < endIndex; i++) {
     const school = schools[i];
     const card = `
-    <div class="card mb-3" style="max-width: 540px;">
+    <div class="card mb-3 ${schoolTypeClass}" style="max-width: 540px;">
         <div class="row no-gutters">
           <div class="col-md-8">
             <div class="card-body">
