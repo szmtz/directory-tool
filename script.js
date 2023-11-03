@@ -10,6 +10,13 @@ fetch('schools.json')
     populateDropdowns(data);  // Initialize dropdowns
   });
 
+// Utility functions at the top
+function ensureHttpPrefix(url) {
+  if (!url.startsWith('http://') && !url.startsWith('https://')) {
+    url = 'http://' + url;
+  }
+  return url;
+}
 
 // Function to populate cards
 // function populateCards(schools) {
