@@ -47,7 +47,7 @@ function populateCards(schools) {
               <p class="card-text"><strong>TEA Region:</strong> ${school["TEA REGION"]}</p>
               <p class="card-text"><strong>Type:</strong> ${school.TYPE}</p>
               <p class="card-text"><strong>Enrollment:</strong> ${school.ENROLLMENT}</p>
-              <p class="card-text"><strong>Website:</strong> <a href="${school.WEB}" target="_blank">${school.WEB}</a></p>
+              <p class="card-text"><strong>Website:</strong> <a href="${ensureHttpPrefix(school.WEB)}" target="_blank">${school.WEB}</a></p>
             </div>
           </div>
         </div>
