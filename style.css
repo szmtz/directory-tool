@@ -47,3 +47,22 @@ h1 {
     width: 100%;  /* One card takes full width */
   }
 }
+
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transform and shadow */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Slightly increase the size of the card */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25); /* Enhanced shadow for depth */
+}
+
+.card-text {
+  line-height: 1.2;
+  margin-bottom: 10px; /* Adjusts the space below paragraphs */
+}
+
+.card-title {
+  margin-bottom: 15px; /* Adjusts the space below titles */
+}
