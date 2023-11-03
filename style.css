@@ -26,26 +26,6 @@ h1 {
   justify-content: space-between;
 }
 
-/* Individual cards */
-/* Pastel colors for different school types */
-.elementary-school {
-  background-color: #FFDFD3; /* Pastel orange */
-}
-
-.middle-school {
-  background-color: #F0E6EF; /* Pastel purple */
-}
-
-/* Add more classes for different school types with their corresponding colors */
-.high-school {
-  background-color: #DEFDE0; /* Pastel green */
-}
-
-.elem-secondary {
-  background-color: #FCF7D5; /* Pastel yellow */
-}
-
-/* Rest of the card styling can remain the same */
 
 .card {
   border: 1px solid #ccc;
@@ -70,7 +50,7 @@ h1 {
 
 
 .card {
-  transition: transform 0.5s ease, box-shadow 0.5s ease; /* Smooth transition for transform and shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transform and shadow */
 }
 
 .card:hover {
@@ -86,4 +66,5 @@ h1 {
 .card-title {
   margin-bottom: 15px; /* Adjusts the space below titles */
 }
+
 
